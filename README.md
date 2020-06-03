@@ -5,4 +5,4 @@ An easy-to-use notepad.
 
 # Features :
 - Very easy to use and understand GUI
-- Ability to save and read rtf, txt, doc and docx files
+- Ability to save,read and write rtf, txt, doc and docx files
