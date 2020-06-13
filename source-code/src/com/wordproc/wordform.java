@@ -1,20 +1,21 @@
 /*
         Author : Andrei Datcu
-
-        Minimal Notepad.
-        27-05-2020.
+        Minotes.
+        Project start date : 27-05-2020.
 */
 package com.wordproc;
 
-import org.w3c.dom.Document;
-
 import javax.swing.*;
+import javax.swing.text.DefaultCaret;
+import javax.swing.text.Document;
 import javax.swing.text.EditorKit;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.lang.*;
 import java.io.*;
+import java.util.Scanner;
+import java.util.stream.Collectors;
 
 public class wordform {
 
@@ -23,7 +24,7 @@ public class wordform {
     private JButton textOptions;
     private JButton aboutButton;
     private JButton opensaveButton;
-    private JTextPane textPane1;
+    private JTextArea textPane1;
 
     public wordform() {
         textOptions.addActionListener(new ActionListener() {
@@ -31,7 +32,7 @@ public class wordform {
             public void actionPerformed(ActionEvent e) {
 
                 // Creating a frame for the options
-                JFrame frame = new JFrame("Text Settings");
+                JFrame frame = new JFrame("Settings");
 
                 // Creating a menu for fonts :
                 String[] fontItems = {"Arial","Arial Black","Avant Garde","Courier","Courier New","Georgia","Helvetica","Impact","Monospace","Times"};
@@ -110,13 +111,97 @@ public class wordform {
                     }
                 });
 
+                // Insert bullet :
+                JButton bulletButton;
+                bulletButton = new JButton(" • Bullet");
+                bulletButton.addActionListener(new ActionListener() {
+                    @Override
+                    public void actionPerformed(ActionEvent e) {
+                        String bullet;
+                        bullet = "  • ";
+                        textPane1.append(bullet);
+                        System.out.println("Inserted bullet!");
+                    }
+                });
+
+                // Insert Note Taking / Dash
+                JButton dashButton;
+                dashButton = new JButton(" - Dash (Note Taking)");
+                dashButton.addActionListener(new ActionListener() {
+                    @Override
+                    public void actionPerformed(ActionEvent e) {
+                        String dash;
+                        dash = "    - ";
+                        textPane1.append(dash);
+                        System.out.println("Inserted dash!");
+                    }
+                });
+
+                // Bullets & lists
+                JLabel bulletsnlistsLabel;
+                bulletsnlistsLabel = new JLabel("Bullets & Lists");
+
+                // Font size
+                JLabel fontSizeLabel;
+                fontSizeLabel = new JLabel("Size");
+
+                // Font type
+                JLabel fontTypeLabel;
+                fontTypeLabel = new JLabel("Font");
+
+                // Formatting
+                JLabel textFormatLabel;
+                textFormatLabel = new JLabel("Format");
+
+                // Bullets & lists Combo Box
+                final JComboBox bulletsnlistsBox;
+                String[] bulletsnlistsArray = {" • Bullet"," - Dash"," ★ Black Star"," ☆ White Star"};
+                bulletsnlistsBox = new JComboBox(bulletsnlistsArray);
+                bulletsnlistsBox.addActionListener(new ActionListener() {
+                    @Override
+                    public void actionPerformed(ActionEvent e) {
+                        String bulletsnlistsBoxSelectedItem = (String) bulletsnlistsBox.getSelectedItem();
+                        if (bulletsnlistsBoxSelectedItem == " • Bullet"){
+                            String bullet;
+                            bullet = "\n    • ";
+                            textPane1.append(bullet);
+                            System.out.println("Inserted bullet!");
+                        }
+                        if (bulletsnlistsBoxSelectedItem == " - Dash"){
+                            String dash;
+                            dash = "\n    - ";
+                            textPane1.append(dash);
+                            System.out.println("Inserted dash!");
+                        }
+                        if (bulletsnlistsBoxSelectedItem == " ★ Black Star"){
+                            String blackStar;
+                            blackStar = "\n    ★ ";
+                            textPane1.append(blackStar);
+                            System.out.println("Inserted black star!");
+                        }
+                        if (bulletsnlistsBoxSelectedItem == " ☆ White Star"){
+                            String blackStar;
+                            blackStar = "\n    ☆ ";
+                            textPane1.append(blackStar);
+                            System.out.println("Inserted white star!");
+                        }
+                    }
+                });
+
                 // Components :
+                frame.add(fontSizeLabel);
                 frame.add(fontSize);
+                frame.add(fontTypeLabel);
                 frame.add(fontCombo);
+                frame.add(textFormatLabel);
                 frame.add(boldButton);
                 frame.add(italicButton);
                 frame.add(plainButton);
                 frame.add(boldnitalicButton);
+                frame.add(bulletsnlistsLabel);
+                frame.add(bulletsnlistsBox);
+                /*frame.add(bulletButton);
+                frame.add(dashButton);*/
 
                 // Frame Preferences :
                 frame.setPreferredSize(new Dimension(370,150));
@@ -130,7 +215,7 @@ public class wordform {
         aboutButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                JOptionPane.showMessageDialog(null, "Minimal Notepad\nAuthor : Andrei Datcu", "About",JOptionPane.PLAIN_MESSAGE);
+                JOptionPane.showMessageDialog(null, "Minotes\nAuthor : Andrei Datcu", "About",JOptionPane.PLAIN_MESSAGE);
             }
         });
 
@@ -162,22 +247,14 @@ public class wordform {
                             try{
                                 path = choosePath.getSelectedFile().getAbsolutePath();
                                 System.out.println("Save path : " + path);
-                                FileOutputStream fos = null;
                                 File file;
-                                file = new File(path); // Output path
-                                fos = new FileOutputStream(file);
-
-                                if(file.exists()){
-                                    file.createNewFile(); //if the file doesn't exist,then it creates a new one.
-                                }
-                                String textArea = (String) textPane1.getText(); // converting JTextPane to a string
-                                byte[] bytesArray = textArea.getBytes(); // converting it in bytes
-                                fos.write(bytesArray);
-                                fos.flush();
+                                FileWriter fw = new FileWriter(path);
+                                fw.write(textPane1.getText());
+                                fw.close();
                             }
 
                             catch (IOException ioe){
-                                ioe.printStackTrace();
+                                System.out.println("uh-oh something's not good");
                             }
                         }
                     }
@@ -200,14 +277,18 @@ public class wordform {
                                 System.out.println("Open path : " + path);
                                 File file;
                                 file = new File(path); // Input path
-                                FileReader fileReader = new FileReader(file); // to read the file
-                                BufferedReader bufferedReader = new BufferedReader(fileReader); // buffer
+                                BufferedReader br = new BufferedReader(new FileReader(path));
+                                textPane1.setText("");
                                 String line = null;
-                                while ((line = bufferedReader.readLine()) != null) {
-                                    textPane1.setText(line); // inputting the buffered characters found by the filereader in the JTextPane
+                                while ((line = br.readLine())!=null){
+                                    textPane1.append(line + "\n");
                                 }
+                               // Scanner scan = new Scanner(file);
+                               // while(scan.hasNextLine()){
+                                //    textPane1.setText(scan.nextLine());
+                               // }
                             } catch (IOException ioe) {
-                                ioe.printStackTrace();
+                                System.out.println("uh-oh something's not good");
                             }
                         }
                     }
@@ -230,7 +311,7 @@ public class wordform {
 
     // Main Page :
     public static void main(String[] args) {
-        JFrame frame = new JFrame("Minimal Notepad");
+        JFrame frame = new JFrame("Minotes");
         frame.setContentPane(new wordform().mainPanel);
         frame.setPreferredSize(new Dimension(500,500));
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
