@@ -1,4 +1,4 @@
-# Minimal-Notepad
+# Minotes
 An easy-to-use notepad.
 
 ![](screenshot/Screenshot.png)
