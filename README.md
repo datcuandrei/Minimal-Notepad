@@ -1,7 +1,7 @@
 # Minotes
 An easy-to-use notepad.
 
-![](screenshot/Screenshot.png)
+![](screenshot/minotes.gif)
 
 # Features :
 - Very easy to understand and use interface
