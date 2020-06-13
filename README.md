@@ -11,7 +11,10 @@ An easy-to-use notepad.
 - Usual keyboard combinations (example : undo, copy, paste) work without issues
 
 # Known issues : 
-- Not saving applied text styles,font and sizes
 - No scroll bar
-- Format applies to the whole text in document
-- Fonts don't match with the ones found in the OS
+- Only reads the last line of document(fixed as of 13.05.2020)
+- No find next
+
+# Updates :
+11.05.2020 - Changed name from "Minimal Notepad" to "Minotes"
+12.05.2020 - Added Bullet caps,Line,Stars,etc.
