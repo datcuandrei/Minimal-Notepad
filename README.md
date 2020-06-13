@@ -5,7 +5,7 @@ An minimal notepad.
 
 # Features :
 - Very easy to understand and use interface
-- Ability to save,read and write rtf, txt, doc and docx files
+- Ability to save,read and write rtf and txt
 - Ability to apply fonts to text
 - Format text as Plain, Bold, Italic or Bold & Italic
 - Usual keyboard combinations (example : undo, copy, paste) work without issues
