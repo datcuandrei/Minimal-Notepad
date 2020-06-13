@@ -16,5 +16,5 @@ An easy-to-use notepad.
 - No find next
 
 # Updates :
-11.05.2020 - Changed name from "Minimal Notepad" to "Minotes"
+11.05.2020 - Changed name from "Minimal Notepad" to "Minotes".
 12.05.2020 - Added Bullet caps,Line,Stars,etc.
