@@ -13,7 +13,7 @@ An easy-to-use and minimal notepad.
 # Known issues : 
 - Only reads the last line of document(fixed as of 13.05.2020)
 - Unresponsive settings interface
-- Unscrollable main window
+- Unscrollable main window(fixed as of 13.05.2020)
 
 # Updates :
 - 11.05.2020 : Changed name from "Minimal Notepad" to "Minotes".
