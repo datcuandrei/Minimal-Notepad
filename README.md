@@ -1,5 +1,5 @@
 # Minotes
-An easy-to-use notepad.
+An easy-to-use and minimal notepad.
 
 ![](screenshot/minotes.gif)
 
