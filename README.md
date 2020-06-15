@@ -1,7 +1,7 @@
 # Minotes
 An minimal notepad.
 
-![](screenshot/minotes.gif)
+![](screenshot/minotes_b1.8.png)
 
 # Features :
 - Very easy to understand and use interface
