@@ -12,7 +12,7 @@ An minimal notepad.
 
 # Known issues : 
 - Only reads the last line of document(fixed as of 13.05.2020)
-- Unresponsive settings interface
+- Unresponsive settings interface(fixed as of 14.05.2020)
 - Unscrollable main window(fixed as of 13.05.2020)
 
 # Updates :
