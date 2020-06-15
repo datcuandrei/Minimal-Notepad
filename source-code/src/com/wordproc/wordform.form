@@ -32,7 +32,7 @@
           </grid>
         </constraints>
         <properties>
-          <text value="Save/Open"/>
+          <text value="File"/>
         </properties>
       </component>
       <scrollpane id="9a25f">

@@ -32,9 +32,12 @@ public class wordform {
             public void actionPerformed(ActionEvent e) {
 
                 // Creating a frame for the options
+
                 JFrame frame = new JFrame("Settings");
+                frame.setLocationRelativeTo(null);
 
                 // Creating a menu for fonts :
+
                 String[] fontItems = {"Arial","Arial Black","Avant Garde","Courier","Courier New","Georgia","Helvetica","Impact","Monospace","Times"};
                 final JComboBox fontCombo;
                 fontCombo = new JComboBox(fontItems);
@@ -47,6 +50,7 @@ public class wordform {
                 });
 
                 // Adjusting the font size :
+
                 JSlider fontSize;
                 fontSize = new JSlider(10,50);
                 fontSize.setOrientation(JSlider.HORIZONTAL);
@@ -55,105 +59,80 @@ public class wordform {
                 fontSize.setPaintTicks(true);
                 fontSize.setPaintLabels(true);
 
-                // Font Style : Bold
-                JButton boldButton;
-                boldButton = new JButton("Bold");
-                boldButton.addActionListener(new ActionListener() {
+                // Applying the font size :
+
+                JButton fontSizeApply = new JButton("Apply");
+                fontSizeApply.addActionListener(new ActionListener() {
                     @Override
                     public void actionPerformed(ActionEvent e) {
-                        String fontItems = (String) fontCombo.getSelectedItem();
+                        String fontsItems = (String) fontCombo.getSelectedItem();
                         int sizeValue = fontSize.getValue();
-                        Font boldFont = new Font(fontItems,Font.BOLD,sizeValue);
-                        textPane1.setFont(boldFont);
-                        System.out.println("Text set to bold!");
+                        Font appliedFont = textPane1.getFont();
+                        Font sizeFont = new Font(fontsItems,appliedFont.getStyle(),sizeValue);
+                        textPane1.setFont(sizeFont);
                     }
                 });
 
-                // Font Style : Italic
-                JButton italicButton;
-                italicButton = new JButton("Italic");
-                italicButton.addActionListener(new ActionListener() {
+                final JComboBox textFormat;
+                String[] textFormatArray = {"Plain","Bold","Italic","Bold & Italic"};
+                textFormat = new JComboBox(textFormatArray);
+                textFormat.addActionListener(new ActionListener() {
                     @Override
                     public void actionPerformed(ActionEvent e) {
-                        String fontItems = (String) fontCombo.getSelectedItem();
-                        int sizeValue = fontSize.getValue();
-                        Font italicFont = new Font(fontItems,Font.ITALIC,sizeValue);
-                        textPane1.setFont(italicFont);
-                        System.out.println("Text set to italic!");
-                    }
-                });
-
-                // Font Style : Bold & Italic
-                JButton boldnitalicButton;
-                boldnitalicButton = new JButton("Bold & Italic");
-                boldnitalicButton.addActionListener(new ActionListener() {
-                    @Override
-                    public void actionPerformed(ActionEvent e) {
-                        String fontItems = (String) fontCombo.getSelectedItem();
-                        int sizeValue = fontSize.getValue();
-                        Font boldnitalicFont = new Font(fontItems,Font.BOLD | Font.ITALIC,sizeValue);
-                        textPane1.setFont(boldnitalicFont);
-                        System.out.println("Text set to bold & italic!");
-                    }
-                });
-
-                // Font Style : Plain
-                JButton plainButton;
-                plainButton = new JButton("Plain");
-                plainButton.addActionListener(new ActionListener() {
-                    @Override
-                    public void actionPerformed(ActionEvent e) {
-                        String fontItems = (String) fontCombo.getSelectedItem();
-                        int sizeValue = fontSize.getValue();
-                        Font plainFont = new Font(fontItems,Font.PLAIN,sizeValue);
-                        textPane1.setFont(plainFont);
-                        System.out.println("Text set to plain!");
-                    }
-                });
-
-                // Insert bullet :
-                JButton bulletButton;
-                bulletButton = new JButton(" • Bullet");
-                bulletButton.addActionListener(new ActionListener() {
-                    @Override
-                    public void actionPerformed(ActionEvent e) {
-                        String bullet;
-                        bullet = "  • ";
-                        textPane1.append(bullet);
-                        System.out.println("Inserted bullet!");
-                    }
-                });
-
-                // Insert Note Taking / Dash
-                JButton dashButton;
-                dashButton = new JButton(" - Dash (Note Taking)");
-                dashButton.addActionListener(new ActionListener() {
-                    @Override
-                    public void actionPerformed(ActionEvent e) {
-                        String dash;
-                        dash = "    - ";
-                        textPane1.append(dash);
-                        System.out.println("Inserted dash!");
+                        String textFormatSelectedItem = (String) textFormat.getSelectedItem();
+                        if (textFormatSelectedItem == "Plain"){
+                            String fontItems = (String) fontCombo.getSelectedItem();
+                            int sizeValue = fontSize.getValue();
+                            Font plainFont = new Font(fontItems,Font.PLAIN,sizeValue);
+                            textPane1.setFont(plainFont);
+                            System.out.println("Text set to plain!");
+                        }
+                        if (textFormatSelectedItem == "Bold"){
+                            String fontItems = (String) fontCombo.getSelectedItem();
+                            int sizeValue = fontSize.getValue();
+                            Font boldFont = new Font(fontItems,Font.BOLD,sizeValue);
+                            textPane1.setFont(boldFont);
+                            System.out.println("Text set to bold!");
+                        }
+                        if (textFormatSelectedItem == "Italic"){
+                            String fontItems = (String) fontCombo.getSelectedItem();
+                            int sizeValue = fontSize.getValue();
+                            Font italicFont = new Font(fontItems,Font.ITALIC,sizeValue);
+                            textPane1.setFont(italicFont);
+                            System.out.println("Text set to italic!");
+                        }
+                        if (textFormatSelectedItem == "Bold & Italic"){
+                            String fontItems = (String) fontCombo.getSelectedItem();
+                            int sizeValue = fontSize.getValue();
+                            Font boldnitalicFont = new Font(fontItems,Font.BOLD | Font.ITALIC,sizeValue);
+                            textPane1.setFont(boldnitalicFont);
+                            System.out.println("Text set to bold & italic!");
+                        }
                     }
                 });
 
                 // Bullets & lists
+
                 JLabel bulletsnlistsLabel;
                 bulletsnlistsLabel = new JLabel("Bullets & Lists");
 
                 // Font size
+
                 JLabel fontSizeLabel;
                 fontSizeLabel = new JLabel("Size");
 
                 // Font type
+
                 JLabel fontTypeLabel;
                 fontTypeLabel = new JLabel("Font");
 
                 // Formatting
+
                 JLabel textFormatLabel;
                 textFormatLabel = new JLabel("Format");
 
                 // Bullets & lists Combo Box
+
                 final JComboBox bulletsnlistsBox;
                 String[] bulletsnlistsArray = {" • Bullet"," - Dash"," ★ Black Star"," ☆ White Star"};
                 bulletsnlistsBox = new JComboBox(bulletsnlistsArray);
@@ -189,49 +168,55 @@ public class wordform {
                 });
 
                 // Components :
+
                 frame.add(fontSizeLabel);
                 frame.add(fontSize);
+                frame.add(fontSizeApply);
                 frame.add(fontTypeLabel);
                 frame.add(fontCombo);
-                frame.add(textFormatLabel);
-                frame.add(boldButton);
-                frame.add(italicButton);
-                frame.add(plainButton);
-                frame.add(boldnitalicButton);
+                //frame.add(textFormatLabel);
+                frame.add(textFormat);
                 frame.add(bulletsnlistsLabel);
                 frame.add(bulletsnlistsBox);
-                /*frame.add(bulletButton);
-                frame.add(dashButton);*/
 
                 // Frame Preferences :
-                frame.setPreferredSize(new Dimension(370,150));
-                frame.setLayout(new FlowLayout(FlowLayout.CENTER));
+
+                frame.setPreferredSize(new Dimension(310,150));
+                frame.setLocationRelativeTo(null);
+                frame.setResizable(false);
+                frame.setLayout(new FlowLayout(FlowLayout.LEFT));
                 frame.setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
                 frame.pack();
                 frame.setVisible(true);
             }});
 
         // About button
+
         aboutButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                JOptionPane.showMessageDialog(null, "Minotes\nAuthor : Andrei Datcu", "About",JOptionPane.PLAIN_MESSAGE);
+                JOptionPane.showMessageDialog(null, "Minotes b1.8\nAuthor : Andrei Datcu", "About",JOptionPane.PLAIN_MESSAGE);
             }
         });
 
         // Open and Save Chooser button
+
         opensaveButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
 
                 // Creating a frame for the options
-                JFrame frame = new JFrame("Open/Save Settings");
+
+                JFrame frame = new JFrame("File");
+                frame.setLocationRelativeTo(null);
 
                 // Public converting(just in case) :
-                String textArea = (String) textPane1.getText(); // converting JTextPane to a string
-                byte[] bytesArray = textArea.getBytes(); // to save a file,you need to convert it in bytes.
+
+                String textArea = (String) textPane1.getText();
+                byte[] bytesArray = textArea.getBytes();
 
                 //Save button :
+
                 JButton saveButton;
                 saveButton = new JButton("Save note");
 
@@ -240,7 +225,7 @@ public class wordform {
                     public void actionPerformed(ActionEvent e) {
                         // File saving algorithm :
                         JFileChooser choosePath = new JFileChooser();
-                        choosePath.setDialogTitle("Choose where to save .txt");
+                        choosePath.setDialogTitle("Choose where to save note");
                         choosePath.setFileSelectionMode(JFileChooser.FILES_AND_DIRECTORIES);
                         String path;
                         if(choosePath.showSaveDialog(null) == JFileChooser.APPROVE_OPTION){
@@ -261,6 +246,7 @@ public class wordform {
                 });
 
                 //Open button :
+
                 JButton openButton;
                 openButton = new JButton("Open note");
 
@@ -268,7 +254,7 @@ public class wordform {
                     @Override
                     public void actionPerformed(ActionEvent e) {
                         JFileChooser choosePath = new JFileChooser();
-                        choosePath.setDialogTitle("Choose txt file");
+                        choosePath.setDialogTitle("Choose note");
                         choosePath.setFileSelectionMode(JFileChooser.FILES_AND_DIRECTORIES);
                         String path;
                         if(choosePath.showOpenDialog(null) == JFileChooser.APPROVE_OPTION) {
@@ -283,10 +269,6 @@ public class wordform {
                                 while ((line = br.readLine())!=null){
                                     textPane1.append(line + "\n");
                                 }
-                               // Scanner scan = new Scanner(file);
-                               // while(scan.hasNextLine()){
-                                //    textPane1.setText(scan.nextLine());
-                               // }
                             } catch (IOException ioe) {
                                 System.out.println("uh-oh something's not good");
                             }
@@ -295,11 +277,14 @@ public class wordform {
                 });
 
                 // Components :
+
                 frame.add(saveButton);
                 frame.add(openButton);
 
                 // Frame Preferences :
-                frame.setPreferredSize(new Dimension(195,100));
+
+                frame.setPreferredSize(new Dimension(250,60));
+                frame.setResizable(false);
                 frame.setLayout(new FlowLayout(FlowLayout.CENTER));
                 frame.setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
                 frame.pack();
@@ -310,8 +295,10 @@ public class wordform {
     }
 
     // Main Page :
+
     public static void main(String[] args) {
         JFrame frame = new JFrame("Minotes");
+        frame.setLocationRelativeTo(null);
         frame.setContentPane(new wordform().mainPanel);
         frame.setPreferredSize(new Dimension(500,500));
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
