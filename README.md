@@ -19,4 +19,4 @@ An minimal notepad.
 - 11.05.2020 : Changed name from "Minimal Notepad" to "Minotes".
 - 12.05.2020 : Added Bullet caps,Line,Stars,etc.
 - 13.05.2020 : Bug fixes.
-- 15.05.2020 : Reworked Settings UI / Bug fixes.
+- 15.05.2020 : Reworked Settings UI / Bug fixes. (as of b1.8)
