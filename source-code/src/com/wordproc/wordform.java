@@ -198,7 +198,7 @@ public class wordform {
         aboutButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                JOptionPane.showMessageDialog(null, "Minotes b1.8.5\nAuthor : Andrei Datcu", "About",JOptionPane.PLAIN_MESSAGE);
+                JOptionPane.showMessageDialog(null, "Minotes b0.8.5\nAuthor : Andrei Datcu", "About",JOptionPane.PLAIN_MESSAGE);
             }
         });
 
