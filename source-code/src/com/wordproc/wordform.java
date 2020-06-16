@@ -6,16 +6,12 @@
 package com.wordproc;
 
 import javax.swing.*;
-import javax.swing.text.DefaultCaret;
-import javax.swing.text.Document;
-import javax.swing.text.EditorKit;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.lang.*;
 import java.io.*;
-import java.util.Scanner;
-import java.util.stream.Collectors;
+import org.apache.commons.io.FilenameUtils;
 
 public class wordform {
 
@@ -38,10 +34,10 @@ public class wordform {
 
                 // Creating a menu for fonts :
 
-                String[] fontItems = {"Arial","Arial Black","Avant Garde","Courier","Courier New","Georgia","Helvetica","Impact","Monospace","Times"};
+                String[] fontItems = GraphicsEnvironment.getLocalGraphicsEnvironment().getAvailableFontFamilyNames();
                 final JComboBox fontCombo;
                 fontCombo = new JComboBox(fontItems);
-                fontCombo.setEditable(true);
+                fontCombo.setEditable(false);
                 fontCombo.addActionListener(new ActionListener() {
                     @Override
                     public void actionPerformed(ActionEvent e) {
@@ -70,6 +66,7 @@ public class wordform {
                         Font appliedFont = textPane1.getFont();
                         Font sizeFont = new Font(fontsItems,appliedFont.getStyle(),sizeValue);
                         textPane1.setFont(sizeFont);
+                        System.out.println("Font set to :" + sizeValue);
                     }
                 });
 
@@ -114,7 +111,7 @@ public class wordform {
                 // Bullets & lists
 
                 JLabel bulletsnlistsLabel;
-                bulletsnlistsLabel = new JLabel("Bullets & Lists");
+                bulletsnlistsLabel = new JLabel("Punctuating lists");
 
                 // Font size
 
@@ -130,6 +127,11 @@ public class wordform {
 
                 JLabel textFormatLabel;
                 textFormatLabel = new JLabel("Format");
+
+                // Random space
+
+                JLabel randomSpace;
+                randomSpace = new JLabel("         ");
 
                 // Bullets & lists Combo Box
 
@@ -174,14 +176,15 @@ public class wordform {
                 frame.add(fontSizeApply);
                 frame.add(fontTypeLabel);
                 frame.add(fontCombo);
-                //frame.add(textFormatLabel);
+                frame.add(textFormatLabel);
                 frame.add(textFormat);
+                frame.add(randomSpace);
                 frame.add(bulletsnlistsLabel);
                 frame.add(bulletsnlistsBox);
 
                 // Frame Preferences :
 
-                frame.setPreferredSize(new Dimension(310,150));
+                frame.setPreferredSize(new Dimension(310,180));
                 frame.setLocationRelativeTo(null);
                 frame.setResizable(false);
                 frame.setLayout(new FlowLayout(FlowLayout.LEFT));
@@ -195,7 +198,7 @@ public class wordform {
         aboutButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                JOptionPane.showMessageDialog(null, "Minotes b1.8\nAuthor : Andrei Datcu", "About",JOptionPane.PLAIN_MESSAGE);
+                JOptionPane.showMessageDialog(null, "Minotes b1.8.5\nAuthor : Andrei Datcu", "About",JOptionPane.PLAIN_MESSAGE);
             }
         });
 
