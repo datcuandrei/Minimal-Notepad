@@ -19,5 +19,5 @@ An minimal notepad.
 - 11.05.2020 : Changed name from "Minimal Notepad" to "Minotes".
 - 12.05.2020 : Added Bullet caps,Line,Stars,etc.
 - 13.05.2020 : Bug fixes.
-- 15.05.2020 : Reworked Settings UI / Bug fixes. (as of b1.8)
-- 16.05.2020 : Introducing b1.8.5!The version that will be pushed to public,compiled for Windows,macOS and Linux!Fonts will be found automatically by the program. ; Renamed "Bullets & Lists" to "Punctuating lists". ; Readded "Format" Label in front of the formatting.
+- 15.05.2020 : Reworked Settings UI / Bug fixes. (as of b0.8)
+- 16.05.2020 : Introducing b0.8.5!The version that will be pushed to public,compiled for Windows,macOS and Linux!Fonts will be found automatically by the program. ; Renamed "Bullets & Lists" to "Punctuating lists". ; Readded "Format" Label in front of the formatting.
