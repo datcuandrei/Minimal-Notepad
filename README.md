@@ -21,6 +21,6 @@ An minimal notepad.
 - 13.05.2020 : Bug fixes.
 - 15.05.2020 : Reworked Settings UI / Bug fixes. (as of b1.8)
 - 16.05.2020 : Introducing b1.8.5!The version that will be pushed to public,compiled for Windows,macOS and Linux!
-               - Fonts will be found automatically by the program.
-               - Renamed "Bullets & Lists" to "Punctuating lists".
-               - Readded "Format" Label in front of the formatting.
+- Fonts will be found automatically by the program.
+- Renamed "Bullets & Lists" to "Punctuating lists".
+- Readded "Format" Label in front of the formatting.
