@@ -1,7 +1,7 @@
 # Minotes
 An minimal notepad.
 
-![](screenshot/minotes_b0.8.5macrelease.png)
+![](screenshot/minotes0.8.5macrelease.png)
 
 # Features :
 - Very easy to understand and use interface
