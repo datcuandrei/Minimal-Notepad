@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CFBundleDevelopmentRegion</key>
+	<string>English</string>
+	<key>CFBundleExecutable</key>
+	<string>JavaAppLauncher</string>
+	<key>CFBundleIconFile</key>
+	<string>Minotes.icns</string>
+	<key>CFBundleIdentifier</key>
+	<string>com.datcuandrei.Minotes</string>
+	<key>CFBundleDisplayName</key>
+	<string>Minotes</string>
+	<key>CFBundleInfoDictionaryVersion</key>
+	<string>6.0</string>
+	<key>CFBundleName</key>
+	<string>Minotes</string>
+	<key>CFBundlePackageType</key>
+	<string>APPL</string>
+	<key>CFBundleShortVersionString</key>
+	<string>b0.8.5</string>
+	<key>CFBundleVersion</key>
+	<string></string>
+	<key>CFBundleSignature</key>
+	<string>????</string>
+	<key>NSHumanReadableCopyright</key>
+	<string>Author : Andrei Datcu</string>
+	<key>NSHighResolutionCapable</key>
+	<true/>
+	<key>NSSupportsAutomaticGraphicsSwitching</key>
+	<true/>
+	<key>JVMMainClassName</key>
+	<string>com.datcuandrei.Minotes</string>
+	<key>CFBundleDocumentTypes</key>
+	<array/>
+	<key>LSArchitecturePriority</key>
+	<array/>
+	<key>LSEnvironment</key>
+	<dict>
+		<key>LC_CTYPE</key>
+		<string>UTF-8</string>
+	</dict>
+	<key>JVMOptions</key>
+	<array>
+		<string>-Dapple.laf.useScreenMenuBar=true</string>
+	</array>
+	<key>JVMDefaultOptions</key>
+	<dict/>
+	<key>JVMArguments</key>
+	<array/>
+</dict>
+</plist>
