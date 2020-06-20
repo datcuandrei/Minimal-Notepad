@@ -3,7 +3,7 @@
         Minotes.
         Project start date : 27-05-2020.
 */
-package com.wordproc;
+package com.datcuandrei;
 
 import javax.swing.*;
 import java.awt.*;
@@ -11,18 +11,16 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.lang.*;
 import java.io.*;
-import org.apache.commons.io.FilenameUtils;
 
-public class wordform {
+public class Minotes {
 
     // Main page components :
     private JPanel mainPanel;
     private JButton textOptions;
-    private JButton aboutButton;
     private JButton opensaveButton;
     private JTextArea textPane1;
 
-    public wordform() {
+    public Minotes() {
         textOptions.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -193,14 +191,14 @@ public class wordform {
                 frame.setVisible(true);
             }});
 
-        // About button
+        // About button : WINDOWS ONLY!!
 
-        aboutButton.addActionListener(new ActionListener() {
+        /*aboutButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 JOptionPane.showMessageDialog(null, "Minotes b0.8.5\nAuthor : Andrei Datcu", "About",JOptionPane.PLAIN_MESSAGE);
             }
-        });
+        });*/
 
         // Open and Save Chooser button
 
@@ -302,7 +300,7 @@ public class wordform {
     public static void main(String[] args) {
         JFrame frame = new JFrame("Minotes");
         frame.setLocationRelativeTo(null);
-        frame.setContentPane(new wordform().mainPanel);
+        frame.setContentPane(new Minotes().mainPanel);
         frame.setPreferredSize(new Dimension(500,500));
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.pack();
