@@ -191,15 +191,6 @@ public class Minotes {
                 frame.setVisible(true);
             }});
 
-        // About button : WINDOWS ONLY!!
-
-        /*aboutButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                JOptionPane.showMessageDialog(null, "Minotes b0.8.5\nAuthor : Andrei Datcu", "About",JOptionPane.PLAIN_MESSAGE);
-            }
-        });*/
-
         // Open and Save Chooser button
 
         opensaveButton.addActionListener(new ActionListener() {
@@ -225,7 +216,7 @@ public class Minotes {
                     @Override
                     public void actionPerformed(ActionEvent e) {
                         // File saving algorithm :
-                        JFileChooser choosePath = new JFileChooser();
+                        JFileChooser choosePath = new JFileChooser("/Applications/Minotes.app/Contents/Notes");
                         choosePath.setDialogTitle("Choose where to save note");
                         choosePath.setFileSelectionMode(JFileChooser.FILES_AND_DIRECTORIES);
                         String path;
@@ -254,7 +245,7 @@ public class Minotes {
                 openButton.addActionListener(new ActionListener() {
                     @Override
                     public void actionPerformed(ActionEvent e) {
-                        JFileChooser choosePath = new JFileChooser();
+                        JFileChooser choosePath = new JFileChooser("/Applications/Minotes.app/Contents/Notes");
                         choosePath.setDialogTitle("Choose note");
                         choosePath.setFileSelectionMode(JFileChooser.FILES_AND_DIRECTORIES);
                         String path;
@@ -277,14 +268,34 @@ public class Minotes {
                     }
                 });
 
+                JButton deleteButton = new JButton("Delete note");
+
+                deleteButton.addActionListener(new ActionListener() {
+                    @Override
+                    public void actionPerformed(ActionEvent e) {
+                        JFileChooser choosePath = new JFileChooser("/Applications/Minotes.app/Contents/Notes");
+                        choosePath.setDialogTitle("Choose note");
+                        choosePath.setFileSelectionMode(JFileChooser.FILES_AND_DIRECTORIES);
+                        String path;
+                        if(choosePath.showOpenDialog(null) == JFileChooser.APPROVE_OPTION){
+                            path = choosePath.getSelectedFile().getAbsolutePath();
+                            System.out.println("Delete path : " + path); // <- Debug info.
+                            File file = new File(path);
+                            file.delete();
+                            System.out.println("Note deleted succesfully!"); // <- Debug info.
+                        }
+                    }
+                });
+
                 // Components :
 
                 frame.add(saveButton);
                 frame.add(openButton);
+                frame.add(deleteButton);
 
                 // Frame Preferences :
 
-                frame.setPreferredSize(new Dimension(250,60));
+                frame.setPreferredSize(new Dimension(150,130));
                 frame.setResizable(false);
                 frame.setLayout(new FlowLayout(FlowLayout.CENTER));
                 frame.setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
@@ -297,7 +308,8 @@ public class Minotes {
 
     // Main Page :
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws UnsupportedLookAndFeelException {
+        UIManager.getSystemLookAndFeelClassName();
         JFrame frame = new JFrame("Minotes");
         frame.setLocationRelativeTo(null);
         frame.setContentPane(new Minotes().mainPanel);
